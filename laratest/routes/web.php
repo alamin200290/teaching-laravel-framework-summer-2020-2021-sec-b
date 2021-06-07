@@ -15,10 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function () {
-    //echo "it works...";
-	return view('login');
-});
+Route::get('/login', ['uses'=>'LoginController@index']);
+Route::post('/login', 'LoginController@verify');
+Route::get('/home', 'HomeController@index');
+Route::get('/logout', 'LogoutController@index');
+Route::get('/user/list', 'UserController@index');
+Route::get('/user/details/{id}', 'UserController@details');
 
 
 Route::get('/register', function(){
