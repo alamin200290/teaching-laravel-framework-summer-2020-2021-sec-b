@@ -20,6 +20,6 @@
 		</tr>
 	</table>
 	</form>
-	<a href="/register"> Signup</a>
+		{{session('msg')}}
 </body>
 </html>
