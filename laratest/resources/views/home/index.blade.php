@@ -8,7 +8,7 @@
 </head>
 <body>
         <h1>Welcome home, {{$name}} :: {{$id}}</h1>
-        <a href=""> Create New </a> |
+        <a href="/user/create"> Create New </a> |
         <a href="/user/list"> User List </a> |
         <a href="/logout"> Logout </a> 
 </body>
