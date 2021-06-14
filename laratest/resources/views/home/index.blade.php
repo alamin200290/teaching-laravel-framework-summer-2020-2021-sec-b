@@ -9,7 +9,7 @@
 <body>
         <h1>Welcome home, {{session('uname')}} :: {{$id}}</h1>
         <a href="/user/create"> Create New </a> |
-        <a href="/user/list"> User List </a> |
+        <a href="{{route('user.index')}}"> User List </a> |
         <a href="/logout"> Logout </a> 
 </body>
 </html>

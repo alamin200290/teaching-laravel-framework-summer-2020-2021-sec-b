@@ -36,28 +36,24 @@ class UserController extends Controller
 
     public function edit($id){
         //find user by id from user list $user
-
         return view('user.edit')->with('user', $user);
     }
 
     public function update(Request $req, $id){
         //craete new user array & add to list
         //new userList
-
         return view('user.list')->with('userList', $users);
     }
 
     public function delete( $id){
         //confirm window
         //find user by id $user
-
-        return view('user.delete')->with('user', $user);
+        return redirect()->route('user.index');
     }
 
     public function destroy($id){
         //remove user form list
         //create new list & display
-
         return view('user.list')->with('userList', $users);
     }
 
