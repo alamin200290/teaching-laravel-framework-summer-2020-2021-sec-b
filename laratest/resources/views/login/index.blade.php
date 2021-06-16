@@ -24,5 +24,10 @@
 	</table>
 	</form>
 		{{session('msg')}}
+		<br>
+
+		@foreach ($errors->all() as $err)
+			{{$err}} <br>
+		@endforeach
 </body>
 </html>

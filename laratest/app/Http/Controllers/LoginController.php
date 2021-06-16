@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
 
 class LoginController extends Controller
 {
@@ -28,6 +29,15 @@ class LoginController extends Controller
         // $cgpa = $req->session()->get('cgpa');
         // $req->session()->keep('cgpa');
         // $req->session()->reflash();
+
+    	$validation = Validator::make($req->all(), [
+    		'uname' => 'required',
+    		'password'=> 'required|min:5'
+    	]);
+
+    	if($validation->fails()){
+    		return redirect()->route('login.index')->with('errors', $validation->errors());
+    	}
 
         if($req->uname == $req->password){
             $req->session()->put('uname', $req->uname);
