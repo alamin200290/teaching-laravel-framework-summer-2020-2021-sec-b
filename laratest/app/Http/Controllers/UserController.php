@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class UserController extends Controller
 {
     public function index(){
-        $users = $this->getUserList();
+        $users = User::all();
         return view('user.list')->with('userList', $users);
     }
 
@@ -36,13 +37,19 @@ class UserController extends Controller
 
     public function edit($id){
         //find user by id from user list $user
+        $user = User::find($id);
         return view('user.edit')->with('user', $user);
     }
 
     public function update(Request $req, $id){
-        //craete new user array & add to list
-        //new userList
-        return view('user.list')->with('userList', $users);
+        
+        $user = User::find($id);
+        $user->username = $req->username;
+        $user->password = $req->password;
+        $user->name = $req->name;
+        $user->type = $req->type;
+        $user->save();
+        return redirect()->route('user.index');
     }
 
     public function delete( $id){
