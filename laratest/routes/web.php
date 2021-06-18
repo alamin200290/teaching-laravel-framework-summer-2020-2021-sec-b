@@ -30,7 +30,7 @@ Route::group(['middleware'=>['sess']] , function(){
 	Route::get('/home', 'HomeController@index')->middleware('sess');
 	Route::get('/xyz/list', 'UserController@index')->name('user.index');
 	Route::get('/user/details/{id}', 'UserController@details')->name('user.details');
-
+	//test route
 	Route::group(['middleware'=>['type']], function(){
 		Route::get('/user/create', 'UserController@create');
 		Route::post('/user/create', 'UserController@insert');
