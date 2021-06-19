@@ -4,23 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
     public function index(){
-        $users = User::all();
+        $users = DB::table('user_table')->get();
+        //$users = User::all();
         return view('user.list')->with('userList', $users);
     }
 
     public function details($id){
-        $users = $this->getUserList();
-        $user = '';
-        foreach($users as $u){
-            if($u['id'] == $id){
-                $user = $u;
-                break;
-            }
-        }
+        $user = User::find($id);
         return view('user.details')->with('user', $user);
     }
 
@@ -29,10 +24,18 @@ class UserController extends Controller
     }
 
     public function insert(Request $req){
-        $users = $this->getUserList();
-        $user = ['id'=>$req->id, 'name'=>$req->uname, 'email'=>$req->email];
-        array_push($users, $user);
-        return view('user.list')->with('userList', $users);
+        
+        $user = new User;
+
+        $user->username = $req->username;
+        $user->password = $req->password;
+        $user->name = $req->name;
+        $user->dept = $req->dept;
+        $user->cgpa = '4';
+        $user->type = 'user';
+        $user->profile_img = '';
+        $user->save();
+        return redirect()->route('user.index');
     }
 
     public function edit($id){
@@ -53,15 +56,13 @@ class UserController extends Controller
     }
 
     public function delete( $id){
-        //confirm window
-        //find user by id $user
-        return redirect()->route('user.index');
+        $user= User::find($id);
+        return view('user.delete')->with('user', $user);
     }
 
     public function destroy($id){
-        //remove user form list
-        //create new list & display
-        return view('user.list')->with('userList', $users);
+        User::destroy($id);
+        return redirect()->route('user.index');
     }
 
 

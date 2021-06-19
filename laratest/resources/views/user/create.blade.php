@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login Page</title>
+	<title>Crate Page</title>
 </head>
 <body>
 
@@ -12,21 +12,22 @@
 
 	<form method="post">
 	<table>
+		@csrf
 		<tr>
 			<td>Username</td>
-			<td><input type="text" name="uname"></td>
+			<td><input type="text" name="username"></td>
 		</tr>
 		<tr>
 			<td>Password</td>
 			<td><input type="password" name="password"></td>
 		</tr>
 		<tr>
-			<td>Email</td>
-			<td><input type="email" name="email"></td>
+			<td>Name</td>
+			<td><input type="text" name="name"></td>
 		</tr>
 		<tr>
-			<td>Type</td>
-			<td><input type="text" name="type"></td>
+			<td>DEPT</td>
+			<td><input type="text" name="dept"></td>
 		</tr>
 		<tr>
 			<td></td>

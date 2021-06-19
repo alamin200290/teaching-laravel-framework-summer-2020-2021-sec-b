@@ -20,14 +20,14 @@
     
     @foreach ($userList as $user) 
         <tr>
-            <td>{{$user['user_id']}}</td>
-            <td>{{$user['username']}}</td>
-            <td>{{$user['password']}}</td>
-            <td>{{$user['type']}}</td>
+            <td>{{$user->user_id}}</td>
+            <td>{{$user->username}}</td>
+            <td>{{$user->password}}</td>
+            <td>{{$user->type}}</td>
             <td>
-                <a href="/user/details/{{$user['user_id']}}"> Details </a> |
-                <a href="/user/edit/{{$user['user_id']}}"> Edit </a> |
-                <a href="/user/delete/{{$user['user_id']}}"> Delete </a> |
+                <a href="/user/details/>{{$user->user_id}}"> Details </a> |
+                <a href="/user/edit/>{{$user->user_id}}"> Edit </a> |
+                <a href="/user/delete/>{{$user->user_id}}"> Delete </a> |
             </td>
         </tr>
     @endforeach
