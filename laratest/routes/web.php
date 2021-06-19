@@ -40,3 +40,5 @@ Route::group(['middleware'=>['sess']] , function(){
 		Route::post('/user/delete/{id}', 'UserController@destroy');
 	});
 });
+
+Route::resource('/product', 'ProductController');
