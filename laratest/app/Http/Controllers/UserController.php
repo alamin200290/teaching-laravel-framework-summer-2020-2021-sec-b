@@ -24,18 +24,32 @@ class UserController extends Controller
     }
 
     public function insert(Request $req){
-        
-        $user = new User;
 
-        $user->username = $req->username;
-        $user->password = $req->password;
-        $user->name = $req->name;
-        $user->dept = $req->dept;
-        $user->cgpa = '4';
-        $user->type = 'user';
-        $user->profile_img = '';
-        $user->save();
-        return redirect()->route('user.index');
+        if($req->hasFile('image')){
+        
+            $file = $req->file('image');
+            echo "File Name: ".$file->getClientOriginalName()."<br>";
+            echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
+            echo "File Mime Type: ".$file->getMimeType()."<br>";
+            echo "File Size: ".$file->getSize()."<br>";
+
+            if($file->move('upload', 'abc.'.$file->getClientOriginalExtension())){
+                echo "success";
+            }else{
+                echo "error";
+            }
+        }
+        
+        // $user = new User;
+        // $user->username = $req->username;
+        // $user->password = $req->password;
+        // $user->name = $req->name;
+        // $user->dept = $req->dept;
+        // $user->cgpa = '4';
+        // $user->type = 'user';
+        // $user->profile_img = '';
+        // $user->save();
+        // return redirect()->route('user.index');
     }
 
     public function edit($id){
